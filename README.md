@@ -33,7 +33,7 @@ La API se conecta por `localhost,1433` con usuario `sa` y contraseña `password1
 (ver `appsettings.json`). Da igual si usas **Azure SQL Edge** o **SQL Server 2022**:
 el motor es compatible con este proyecto (EF Core, migraciones, T-SQL de las preguntas 5 y 7).
 
-### Opción A — Mac (Apple Silicon / M1–M3): Azure SQL Edge (recomendada)
+### Opción A — Mac (Apple Silicon / M1–M5): Azure SQL Edge (recomendada)
 
 En Mac ARM la imagen completa de SQL Server suele fallar o ir por emulación.
 Azure SQL Edge es la opción estable:
