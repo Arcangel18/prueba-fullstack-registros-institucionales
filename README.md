@@ -27,7 +27,27 @@ formulario React de registro de entidades y esquema SQL Server del servicio.
 - Docker (SQL Server)
 - Node.js 18+ (solo para el frontend)
 
-## 1. Ejecutar SQL Server
+## 1. Ejecutar SQL Server (Docker)
+
+La API se conecta por `localhost,1433` con usuario `sa` y contraseña `password123`
+(ver `appsettings.json`). Da igual si usas **Azure SQL Edge** o **SQL Server 2022**:
+el motor es compatible con este proyecto (EF Core, migraciones, T-SQL de las preguntas 5 y 7).
+
+### Opción A — Mac (Apple Silicon / M1–M3): Azure SQL Edge (recomendada)
+
+En Mac ARM la imagen completa de SQL Server suele fallar o ir por emulación.
+Azure SQL Edge es la opción estable:
+
+```bash
+docker run \
+  --name sqlserver-registros \
+  -e "ACCEPT_EULA=1" \
+  -e "MSSQL_SA_PASSWORD=password123" \
+  -p 1433:1433 \
+  -d mcr.microsoft.com/azure-sql-edge
+```
+
+### Opción B — Windows / Linux (x64): SQL Server 2022
 
 ```bash
 docker run \
@@ -37,6 +57,10 @@ docker run \
   -p 1433:1433 \
   -d mcr.microsoft.com/mssql/server:2022-latest
 ```
+
+> Nota: en algunas imágenes la política de contraseña exige mayúsculas/símbolos.
+> Si el contenedor no arranca con `password123`, usa una más fuerte (ej. `Password123!`)
+> y actualiza también `appsettings.json`.
 
 La cadena de conexión en `appsettings.json` usa la misma contraseña: `password123`.
 
