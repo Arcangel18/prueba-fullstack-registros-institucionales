@@ -147,13 +147,13 @@ Script exclusivo en:
 
 ### Qué incluye (puntos 11–15)
 
-| Punto | Contenido |
-|-------|-----------|
+| Punto  | Contenido                                                                                                                                     |
+| ------ | --------------------------------------------------------------------------------------------------------------------------------------------- |
 | **11** | Tabla `Registros`: `Identificador`, `Nombre` (búsqueda) + `Estado`, `NumeroRegistro`, `FechaEvento`, `FechaInscripcion` (salida del endpoint) |
-| **12** | Tabla `Entidades`: `Activa`, `FechaInicioConvenio`, `FechaFinConvenio`, `CuotaDiaria` configurable por entidad, `ApiKey` |
-| **13** | Tabla `LogAccesos`: `EntidadId`, `FechaHora`, `TipoConsulta`, `Resultado`, `Motivo`, `IdentificadorConsultado` (auditoría + cuota) |
+| **12** | Tabla `Entidades`: `Activa`, `FechaInicioConvenio`, `FechaFinConvenio`, `CuotaDiaria` configurable por entidad, `ApiKey`                      |
+| **13** | Tabla `LogAccesos`: `EntidadId`, `FechaHora`, `TipoConsulta`, `Resultado`, `Motivo`, `IdentificadorConsultado` (auditoría + cuota)            |
 | **14** | Índice `IX_Registros_Identificador_Nombre` (búsqueda individual) e índice `IX_LogAccesos_Entidad_Fecha_Resultado` (conteo diario por entidad) |
-| **15** | Trigger `TR_LogAccesos_ValidarCuotaDiaria`: impide insertar un acceso `APROBADO` si la entidad ya superó su `CuotaDiaria` del día |
+| **15** | Trigger `TR_LogAccesos_ValidarCuotaDiaria`: impide insertar un acceso `APROBADO` si la entidad ya superó su `CuotaDiaria` del día             |
 
 Las decisiones de diseño están comentadas dentro del mismo script SQL.
 
@@ -163,21 +163,7 @@ Sobre SQL Server, con la base `SviDb` creada:
 
 ```bash
 # Ejemplo con sqlcmd (ajusta usuario/contraseña según tu Docker)
-sqlcmd -S localhost,1433 -U sa -P "TuPassword123!" -d SviDb -i Pregunta7/pregunta7.sql
+sqlcmd -S localhost,1433 -U sa -P "password123" -d SviDb -i Pregunta7/pregunta7.sql
 ```
 
 > Nota: la API ya genera un esquema equivalente vía migraciones EF Core.
-> Este script es la **entrega formal** de la Pregunta 7 (CREATE TABLE, índices y trigger con justificación).
-
----
-
-## Subir a GitHub
-
-```bash
-git init
-git add .
-git commit -m "Implementación preguntas 4, 5, 6 y 7 — evaluación fullstack"
-git branch -M main
-git remote add origin URL_DE_TU_REPOSITORIO
-git push -u origin main
-```
