@@ -1,0 +1,11 @@
+@RegistrosInstitucionales.Api_http = http://localhost:5160
+
+### Consulta de registro
+POST {{RegistrosInstitucionales.Api_http}}/api/registros/consulta
+Content-Type: application/json
+X-API-Key: API-KEY-PRUEBA-123
+
+{
+  "identificador": "8-123-456",
+  "nombre": "Juan Pérez"
+}

@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="RegistrosInstitucionales.Api/RegistrosInstitucionales.Api.csproj" />
+  <Project Path="RegistrosInstitucionales.Tests/RegistrosInstitucionales.Tests.csproj" />
+</Solution>

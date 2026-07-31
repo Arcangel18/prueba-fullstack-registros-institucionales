@@ -1,0 +1,5 @@
+uploads/
+**/uploads/
+*.user
+.DS_Store
+.env
